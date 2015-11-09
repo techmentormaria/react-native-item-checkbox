@@ -21,20 +21,17 @@ var ItemCheckbox = React.createClass({
     color: React.PropTypes.String,
     iconSize: React.PropTypes.String,
     checked: React.PropTypes.bool,
+    style: React.PropTypes.func,
   },
 
   getDefaultProps: function() {
     return {
-      onCheck: {
-        function() {alert("implement me!")}
-      },
-      onUncheck: {
-        function() {alert("implement me!")}
-      },
+      onCheck: null,
+      onUncheck: null,
       icon: "check",
-      size: 18,
-      backgroundColor: 'grey',
-      color: 'white',
+      size: 30,
+      backgroundColor: 'white',
+      color: 'grey',
       iconSize: 'normal,',
       checked: false,
     };
@@ -65,9 +62,9 @@ var ItemCheckbox = React.createClass({
     if (this.props.iconSize == 'small') {
       return this.props.size * 0.5;
     } else if (this.props.iconSize == 'normal') {
-      return this.props.size * 0.65;
+      return this.props.size * 0.6;
     } else {
-      return this.props.size * 0.8;
+      return this.props.size * 0.7;
     }
   },
 
@@ -86,13 +83,17 @@ var ItemCheckbox = React.createClass({
         checked: false,
         bg_color: this.props.backgroundColor,
       });
-      return this.props.onUncheck;
+      if (this.props.onUncheck) {
+        this.props.onUncheck();
+      }
     } else {
       this.setState({
         checked: true,
         bg_color: this.props.color,
       });
-      return this.props.onCheck;
+      if (this.props.onCheck) {
+        this.props.onCheck();
+      }
     }
   },
 
@@ -105,7 +106,7 @@ var ItemCheckbox = React.createClass({
   render: function() {
     var icon = 'fontawesome|' + this.props.icon;
     return(
-      <View style={styles.list_item}>
+      <View style={this.props.style}>
         <TouchableHighlight
           onPress={this._completeProgress}
           >
@@ -122,18 +123,6 @@ var ItemCheckbox = React.createClass({
       </View>
     );
   },
-});
-
-var styles = StyleSheet.create({
-  circle_text: {
-    color: 'white',
-    textAlign: 'center',
-    fontFamily: 'Proxima Nova Alt',
-    flex: 1,
-    width: 18,
-    borderRadius: 3,
-    height: 18,
-  }
 });
 
 module.exports = ItemCheckbox;

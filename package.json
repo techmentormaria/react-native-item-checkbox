@@ -5,4 +5,16 @@
   "version": "0.1.0",
   "main": "ItemCheckbox.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mhollweck/react-native-item-checkbox"
+  },
+  "bugs": "https://github.com/mhollweck/react-native-item-checkbox/issues",
+  "dependencies": {
+    "react-native-icons": "^0.6.0"
+  },
+  "peerDependencies": {
+    "react-native": "^0.x"
+  },
+  "directories": {}
 }
