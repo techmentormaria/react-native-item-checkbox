@@ -16,5 +16,10 @@
   "peerDependencies": {
     "react-native": "^0.x"
   },
-  "directories": {}
+  "directories": {},
+  "keywords": [
+    "react-component",
+    "checkbox",
+    "icon",
+  ]
 }
