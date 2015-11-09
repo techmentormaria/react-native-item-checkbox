@@ -23,26 +23,29 @@ checked (PropTypes.bool) | false  | {true, false}
 style (PropTypes.func) | null  | custom style
 
 #### **Examples**
-
+```
 <ItemCheckbox /> // 
-
+```
 ![Gif](http://i.imgur.com/34gKmoX.gif)
 
+```
 // ...
 _onCheckCallback: function() {
-alert('checked');
+  alert('checked');
 },
 // ...
 <ItemCheckbox //example with callbacks
-onCheck={this._onCheckCallback}
+  onCheck={this._onCheckCallback}
 />
-
+```
+```
 <ItemCheckbox //example with icon settings
-color="#FF9999"
-icon="tree"
-iconSize="normal" //"small", "normal", "large"
-size={100}
+  color="#FF9999"
+  icon="tree"
+  iconSize="normal" //"small", "normal", "large"
+  size={100}
 />
+```
 ![Gif](http://i.imgur.com/r1yVTtO.gif)
 
 
@@ -50,4 +53,5 @@ size={100}
 #### **iconSize**
 
 ![Gif](http://i.imgur.com/r9w1cmg.png)
-iconSize={"small", "normal", "large"}
+
+```iconSize={"small", "normal", "large"}```
