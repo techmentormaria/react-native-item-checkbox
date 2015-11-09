@@ -1,14 +1,18 @@
 # react-native-item-checkbox
 Create your own item checkbox with custom colors.
 
+## **Getting started**
+
+```npm i react-native-item-checkbox```
+
+!IMPORTANT **Include the FontAwesome pack to your XCode Project [(check here)](https://github.com/corymsmith/react-native-icons)**
+
+
 #### **Basic usage**
 
 <ItemCheckbox onCheck={this._yourCallback} />
 This basic line will generate a standard checkbox with a 'check' symbol for you. 
 
-#### **Getting started**
-npm ...
-Include the FontAwesome pack to your XCode Project [(check here)](https://github.com/corymsmith/react-native-icons)
 #### **Options**
 Option  | default value | values
 ------------- | ------------- | -------------
