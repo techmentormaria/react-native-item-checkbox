@@ -8,7 +8,7 @@ var {
   StyleSheet,
   Text,
   View,
-  TouchableHighlight,
+  TouchableWithoutFeedback,
 } = React;
 
 var ItemCheckbox = React.createClass({
@@ -107,7 +107,7 @@ var ItemCheckbox = React.createClass({
     var icon = 'fontawesome|' + this.props.icon;
     return(
       <View style={this.props.style}>
-        <TouchableHighlight
+        <TouchableWithoutFeedback
           onPress={this._completeProgress}
           >
           <View style={this._getCircleCheckStyle()}>
@@ -119,7 +119,7 @@ var ItemCheckbox = React.createClass({
               style={this._getCircleIconStyle()}
             />
           </View>
-        </TouchableHighlight>
+        </TouchableWithoutFeedback>
       </View>
     );
   },
