@@ -28,6 +28,9 @@ style (PropTypes.func) | null  | custom style
 
 #### **Examples**
 ```
+var ItemCheckbox = require('react-native-item-checkbox');
+
+// inside your render function
 <ItemCheckbox /> // 
 ```
 ![Gif](http://i.imgur.com/34gKmoX.gif)
