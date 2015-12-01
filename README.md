@@ -17,7 +17,7 @@ This basic line will generate a standard checkbox with a 'check' symbol for you.
 Option  | default value | values
 ------------- | ------------- | -------------
 onCheck (PropTypes.func) | function that alerts 'implement me'  | callback function
-onUnCheck (PropTypes.func) | function that alerts 'implement me'  | callback function
+onUncheck (PropTypes.func) | function that alerts 'implement me'  | callback function
 icon (PropTypes.String) | 'check'  | any FontAwesome icon you find [here](https://fortawesome.github.io/Font-Awesome/icons/)  
 size (PropTypes.number) | 18  | the size of your checkbox button
 backgroundColor (PropTypes.String) | 'grey'  | colors
