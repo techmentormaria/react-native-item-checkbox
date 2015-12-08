@@ -1,46 +1,54 @@
 'use strict';
 
 var React = require('react-native');
-var { Icon, } = require('react-native-icons');
+
 
 var {
-  AppRegistry,
-  StyleSheet,
-  Text,
+  PropTypes,
   View,
-  TouchableWithoutFeedback,
+  Text,
+  TouchableHighlight,
+  TouchableWithoutFeedback
 } = React;
 
 var ItemCheckbox = React.createClass({
   propTypes: {
+    icon: PropTypes.func,
+    icon_check: PropTypes.string,
+    icon_open: PropTypes.string,
     onCheck: React.PropTypes.func,
     onUncheck: React.PropTypes.func,
-    icon: React.PropTypes.String,
     size: React.PropTypes.number,
     backgroundColor: React.PropTypes.String,
     color: React.PropTypes.String,
     iconSize: React.PropTypes.String,
     checked: React.PropTypes.bool,
     style: React.PropTypes.func,
+    text: PropTypes.string,
+    disabled: PropTypes.bool
   },
 
   getDefaultProps: function() {
     return {
+      icon: null,
       onCheck: null,
       onUncheck: null,
-      icon: "check",
+      icon_check: "check-square",
+      icon_open: "square-o",
       size: 30,
       backgroundColor: 'white',
       color: 'grey',
       iconSize: 'normal,',
       checked: false,
+      text: 'MISSING TEXT',
+      disabled: false
     };
   },
 
   getInitialState: function () {
     return {
-      checked: false,
-      bg_color: this.props.backgroundColor,
+      checked: this.props.checked,
+      bg_color: this.props.backgroundColor
     };
   },
 
@@ -104,25 +112,54 @@ var ItemCheckbox = React.createClass({
   },
 
   render: function() {
-    var icon = 'fontawesome|' + this.props.icon;
-    return(
-      <View style={this.props.style}>
-        <TouchableWithoutFeedback
-          onPress={this._completeProgress}
-          >
-          <View style={this._getCircleCheckStyle()}>
-            <Icon
-              name={'fontawesome|' + this.props.icon}
-              size={this._getIconSize()}
-              color={this.props.backgroundColor}
-              backgroundColor='transparent'
-              style={this._getCircleIconStyle()}
-            />
+    var iconName=this.props.icon_open;
+    if (this.state.checked) {
+      iconName=this.props.icon_check;
+    }
+
+    let Icon = this.props.icon;
+    
+    if (this.props.disabled) {
+      iconName = this.props.checked ? this.props.icon_check : this.props.icon_open;
+      return (
+        <View style={this.props.style}>
+          <TouchableWithoutFeedback>
+            <View style={{
+                flexDirection: 'row',
+                flex:1
+              }}>
+              <Icon
+                  name={iconName}
+                  size={20}
+                  style={this._getCircleIconStyle}
+              />
+              <Text> {this.props.text}</Text>
+            </View>
+          </TouchableWithoutFeedback>
+        </View>
+        );
+      } else {
+        return(
+          <View style={this.props.style}>
+            <TouchableHighlight
+                onPress={this._completeProgress}
+            >
+              <View style={{
+                  flexDirection: 'row',
+                  flex:1
+                }}>
+                <Icon
+                    name={iconName}
+                    size={20}
+                    style={this._getCircleIconStyle}
+                />
+                <Text> {this.props.text}</Text>
+              </View>
+            </TouchableHighlight>
           </View>
-        </TouchableWithoutFeedback>
-      </View>
-    );
-  },
+        ); //return
+      }//else
+    } //render
 });
 
 module.exports = ItemCheckbox;
