@@ -2,7 +2,7 @@
   "name": "react-native-item-checkbox",
   "description": "create a custom checkbox with an icon inside",
   "author": "Maria Hollwcek <mariahollweck@gmail.com>",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "ItemCheckbox.js",
   "license": "MIT",
   "repository": {
