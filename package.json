@@ -14,7 +14,7 @@
     "react-native-icons": "^0.6.0"
   },
   "peerDependencies": {
-    "react-native": "^0.x"
+    "react-native": ">=v0.13.0"
   },
   "directories": {},
   "keywords": [
