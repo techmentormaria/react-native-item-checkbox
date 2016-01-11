@@ -13,9 +13,6 @@
   "dependencies": {
     "react-native-icons": "^0.6.0"
   },
-  "peerDependencies": {
-    "react-native": ">=0.13.0"
-  },
   "directories": {},
   "keywords": [
     "react-component",
