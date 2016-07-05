@@ -23,7 +23,8 @@ size (PropTypes.number) | 18  | the size of your checkbox button
 backgroundColor (PropTypes.String) | 'grey'  | colors
 color (PropTypes.String) | 'white'  | colors
 iconSize (PropTypes.String) | 'normal'  | {'small', 'normal', 'large'}
-checked (PropTypes.bool) | false  | {true, false}
+checked (PropTypes.bool) | false  | {true, false} (calles onCheck or onUncheck)
+default (PropTypes.bool) | false  | {true, false} (doesn't call onCheck or onUncheck)
 style (PropTypes.func) | null  | custom style
 
 #### **Examples**

@@ -1,18 +1,21 @@
 'use strict';
+/**
+ * @providesModule ItemCheckbox
+ */
 
-var React = require('react-native');
-var { Icon, } = require('react-native-icons');
+import React, { Component, PropTypes } from 'react';
 
-var {
-  AppRegistry,
+import {
+  View,
   StyleSheet,
   Text,
-  View,
   TouchableWithoutFeedback,
-} = React;
+} from 'react-native'
 
-var ItemCheckbox = React.createClass({
-  propTypes: {
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+export default class ItemCheckbox extends React.Component {
+  static propTypes = {
     onCheck: React.PropTypes.func,
     onUncheck: React.PropTypes.func,
     icon: React.PropTypes.string,
@@ -22,29 +25,31 @@ var ItemCheckbox = React.createClass({
     iconSize: React.PropTypes.string,
     checked: React.PropTypes.bool,
     style: React.PropTypes.func,
-  },
+    default: React.PropTypes.bool,
+  };
 
-  getDefaultProps: function() {
-    return {
-      onCheck: null,
-      onUncheck: null,
-      icon: "check",
-      size: 30,
-      backgroundColor: 'white',
-      color: 'grey',
-      iconSize: 'normal,',
-      checked: false,
-    };
-  },
+  static defaultProps = {
+    onCheck: null,
+    onUncheck: null,
+    icon: "check",
+    size: 40,
+    backgroundColor: 'white',
+    color: 'grey',
+    iconSize: 'normal',
+    checked: false,
+    default: false,
+  };
 
-  getInitialState: function () {
-    return {
+  constructor(props, context) {
+    super(props, context);
+
+    this.state = {
       checked: false,
       bg_color: this.props.backgroundColor,
-    };
-  },
+    }
+  }
 
-  _getCircleCheckStyle: function() {
+  _getCircleCheckStyle() {
     return {
       width: this.props.size,
       height: this.props.size,
@@ -56,9 +61,9 @@ var ItemCheckbox = React.createClass({
       alignItems: 'center',
       padding: 2,
     };
-  },
+  }
 
-  _getIconSize: function() {
+  _getIconSize() {
     if (this.props.iconSize == 'small') {
       return this.props.size * 0.5;
     } else if (this.props.iconSize == 'normal') {
@@ -66,24 +71,23 @@ var ItemCheckbox = React.createClass({
     } else {
       return this.props.size * 0.7;
     }
-  },
+  }
 
-  _getCircleIconStyle: function() {
+  _getCircleIconStyle() {
     return {
       color: this.props.backgroundColor,
-      flex: 1,
       width: this._getIconSize(),
       height: this._getIconSize(),
     };
-  },
+  }
 
-  _completeProgress: function() {
+  _completeProgress(defaultValue = false) {
     if (this.state.checked) {
       this.setState({
         checked: false,
         bg_color: this.props.backgroundColor,
       });
-      if (this.props.onUncheck) {
+      if (this.props.onUncheck && !defaultValue) {
         this.props.onUncheck();
       }
     } else {
@@ -91,28 +95,36 @@ var ItemCheckbox = React.createClass({
         checked: true,
         bg_color: this.props.color,
       });
-      if (this.props.onCheck) {
+      if (this.props.onCheck && !defaultValue) {
         this.props.onCheck();
       }
     }
-  },
+  }
 
-  componentDidMount: function() {
+  _initDefault() {
+    this._completeProgress(true);
+  }
+
+  componentDidMount() {
     if (this.props.checked) {
       this._completeProgress();
     }
-  },
 
-  render: function() {
-    var icon = 'fontawesome|' + this.props.icon;
-    return(
+    if (this.props.default) {
+      this._initDefault();
+    }
+  }
+
+  render() {
+    var icon = this.props.icon;
+    return (
       <View style={this.props.style}>
         <TouchableWithoutFeedback
-          onPress={this._completeProgress}
+          onPress={this._completeProgress.bind(this)}
           >
           <View style={this._getCircleCheckStyle()}>
             <Icon
-              name={'fontawesome|' + this.props.icon}
+              name={this.props.icon}
               size={this._getIconSize()}
               color={this.props.backgroundColor}
               backgroundColor='transparent'
@@ -122,7 +134,7 @@ var ItemCheckbox = React.createClass({
         </TouchableWithoutFeedback>
       </View>
     );
-  },
-});
+  }
+}
 
 module.exports = ItemCheckbox;
