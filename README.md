@@ -5,7 +5,8 @@ Create your own item checkbox with custom colors.
 
 ```npm i react-native-item-checkbox```
 
-!IMPORTANT **Include the FontAwesome pack to your XCode Project [(check here)](https://github.com/corymsmith/react-native-icons)**
+!IMPORTANT **only works with react-native-vector-items now**
+Don't forget to run ```rnpm link```
 
 
 #### **Basic usage**
