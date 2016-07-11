@@ -24,7 +24,6 @@ export default class ItemCheckbox extends React.Component {
     color: React.PropTypes.string,
     iconSize: React.PropTypes.string,
     checked: React.PropTypes.bool,
-    style: React.PropTypes.func,
     default: React.PropTypes.bool,
   };
 
@@ -81,7 +80,7 @@ export default class ItemCheckbox extends React.Component {
     };
   }
 
-  _completeProgress(defaultValue = false) {
+  _completeProgress(defaultValue) {
     if (this.state.checked) {
       this.setState({
         checked: false,
@@ -107,7 +106,7 @@ export default class ItemCheckbox extends React.Component {
 
   componentDidMount() {
     if (this.props.checked) {
-      this._completeProgress();
+      this._completeProgress(false);
     }
 
     if (this.props.default) {
@@ -120,7 +119,7 @@ export default class ItemCheckbox extends React.Component {
     return (
       <View style={this.props.style}>
         <TouchableWithoutFeedback
-          onPress={this._completeProgress.bind(this)}
+          onPress={this._completeProgress.bind(this, false)}
           >
           <View style={this._getCircleCheckStyle()}>
             <Icon
