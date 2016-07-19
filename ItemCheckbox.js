@@ -6,10 +6,9 @@
 import React, { Component, PropTypes } from 'react';
 
 import {
-  View,
-  StyleSheet,
-  Text,
-  TouchableWithoutFeedback,
+    View,
+    Text,
+    TouchableWithoutFeedback,
 } from 'react-native'
 
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -37,6 +36,8 @@ export default class ItemCheckbox extends React.Component {
     iconSize: 'normal',
     checked: false,
     default: false,
+    label: null,
+    labelStyle: null
   };
 
   constructor(props, context) {
@@ -115,9 +116,9 @@ export default class ItemCheckbox extends React.Component {
   }
 
   render() {
-    var icon = this.props.icon;
+    var labelStyle = this.props.labelStyle !== null ? this.props.labelStyle : {color: this.props.color, margin: 10};
     return (
-      <View style={this.props.style}>
+      <View style={[this.props.style, {flexDirection: 'row'}]}>
         <TouchableWithoutFeedback
           onPress={this._completeProgress.bind(this, false)}
           >
@@ -131,6 +132,7 @@ export default class ItemCheckbox extends React.Component {
             />
           </View>
         </TouchableWithoutFeedback>
+            <Text style={[labelStyle, {flexDirection: 'row'}]}>{this.props.label}</Text>
       </View>
     );
   }
