@@ -24,6 +24,8 @@ export default class ItemCheckbox extends React.Component {
     iconSize: React.PropTypes.string,
     checked: React.PropTypes.bool,
     default: React.PropTypes.bool,
+    label: React.PropTypes.string,
+    labelStyle: React.PropTypes.number
   };
 
   static defaultProps = {
