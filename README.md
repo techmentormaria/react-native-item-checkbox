@@ -27,6 +27,8 @@ iconSize (PropTypes.String) | 'normal'  | {'small', 'normal', 'large'}
 checked (PropTypes.bool) | false  | {true, false} (calles onCheck or onUncheck)
 default (PropTypes.bool) | false  | {true, false} (doesn't call onCheck or onUncheck)
 style (PropTypes.func) | null  | custom style
+label (PropTypes.String) | null | label for your checkbox
+labelStyle (PropTypes.StyleSheet) | null | style for your label
 
 #### **Examples**
 ```
