@@ -78,7 +78,7 @@ export default class ItemCheckbox extends React.Component {
     };
   }
 
-  _setStatus(checked, doInvoke) {
+  _setStatus(checked) {
     // Assume unchecked
     var bg_color = this.props.backgroundColor;
     var invokable = this.props.onUncheck;
@@ -93,14 +93,10 @@ export default class ItemCheckbox extends React.Component {
       checked,
       bg_color
     });
-
-    if(doInvoke) {
-      invokable();
-    }
   }
 
   _checkItem(checked) {
-    this._setStatus(checked, false);
+    this._setStatus(checked);
   }
 
   componentDidMount() {

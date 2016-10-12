@@ -24,7 +24,7 @@ size (PropTypes.number) | 18  | the size of your checkbox button
 backgroundColor (PropTypes.String) | 'grey'  | colors
 color (PropTypes.String) | 'white'  | colors
 iconSize (PropTypes.String) | 'normal'  | {'small', 'normal', 'large'}
-checked (PropTypes.bool) | false  | {true, false} You have to change this value to change the displayed status
+checked (PropTypes.bool) | false  | {true, false} You have to change this value to change the displayed status(controlled value)
 style (PropTypes.func) | null  | custom style
 
 #### **Examples**
@@ -62,4 +62,6 @@ _onCheckCallback: function() {
 
 ![Gif](http://i.imgur.com/r9w1cmg.png)
 
-```iconSize={"small", "normal", "large"}```
+```javascript
+iconSize={"small", "normal", "large"}
+```
