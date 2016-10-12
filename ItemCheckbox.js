@@ -24,7 +24,6 @@ export default class ItemCheckbox extends React.Component {
     color: React.PropTypes.string,
     iconSize: React.PropTypes.string,
     checked: React.PropTypes.bool,
-    default: React.PropTypes.bool,
   };
 
   static defaultProps = {
@@ -36,7 +35,6 @@ export default class ItemCheckbox extends React.Component {
     color: 'grey',
     iconSize: 'normal',
     checked: false,
-    default: false,
   };
 
   constructor(props, context) {
@@ -80,37 +78,40 @@ export default class ItemCheckbox extends React.Component {
     };
   }
 
-  _completeProgress(defaultValue) {
-    if (this.state.checked) {
-      this.setState({
-        checked: false,
-        bg_color: this.props.backgroundColor,
-      });
-      if (this.props.onUncheck && !defaultValue) {
-        this.props.onUncheck();
-      }
-    } else {
-      this.setState({
-        checked: true,
-        bg_color: this.props.color,
-      });
-      if (this.props.onCheck && !defaultValue) {
-        this.props.onCheck();
-      }
+  _setStatus(checked) {
+    // Assume unchecked
+    var bg_color = this.props.backgroundColor;
+    var invokable = this.props.onUncheck;
+
+    // If checked
+    if (checked) {
+      bg_color = this.props.color;
+      invokable = this.props.onCheck;
     }
+
+    this.setState({
+      checked,
+      bg_color
+    });
   }
 
-  _initDefault() {
-    this._completeProgress(true);
+  _checkItem(checked) {
+    this._setStatus(checked);
   }
 
   componentDidMount() {
-    if (this.props.checked) {
-      this._completeProgress(false);
-    }
+    this._checkItem(this.props.checked);
+  }
 
-    if (this.props.default) {
-      this._initDefault();
+  componentWillReceiveProps(nextProps) {
+    this._checkItem(nextProps.checked);
+  }
+
+  _onPress() {
+    if(this.state.checked) {
+      this.props.onUncheck();
+    } else {
+      this.props.onCheck();
     }
   }
 
@@ -119,7 +120,7 @@ export default class ItemCheckbox extends React.Component {
     return (
       <View style={this.props.style}>
         <TouchableWithoutFeedback
-          onPress={this._completeProgress.bind(this, false)}
+          onPress={this._onPress.bind(this)}
           >
           <View style={this._getCircleCheckStyle()}>
             <Icon
