@@ -22,6 +22,7 @@ onUncheck (PropTypes.func) | function that alerts 'implement me'  | callback fun
 icon (PropTypes.String) | 'check'  | any FontAwesome icon you find [here](https://fortawesome.github.io/Font-Awesome/icons/)  
 size (PropTypes.number) | 18  | the size of your checkbox button
 backgroundColor (PropTypes.String) | 'grey'  | colors
+borderWidth (PropTypes.number) | 2  | the width of the border
 color (PropTypes.String) | 'white'  | colors
 iconSize (PropTypes.String) | 'normal'  | {'small', 'normal', 'large'}
 checked (PropTypes.bool) | false  | {true, false} (calles onCheck or onUncheck)
